@@ -106,7 +106,7 @@ INSERT INTO "COACH" (user_id, experience_years)
     (
       (SELECT id FROM "USER" WHERE email = 'starplatinum@hexschooltest.io'),
       2
-    )
+    );
 -- 3-2. 新增：承1，為三名教練新增專長資料至 `COACH_LINK_SKILL` ，資料需求如下：
     -- 1. 所有教練都有 `重訓` 專長
     -- 2. 教練`肌肉棒子` 需要有 `瑜伽` 專長
@@ -136,7 +136,7 @@ INSERT INTO "COACH_LINK_SKILL" (coach_id, skill_id)
     (
       (SELECT id FROM "COACH" WHERE user_id = (SELECT id FROM "USER" WHERE email = 'starplatinum@hexschooltest.io')),
       (SELECT id FROM "SKILL" WHERE name = '復健訓練')
-    )
+    );
 
 -- 3-3 修改：更新教練的經驗年數，資料需求如下：
     -- 1. 教練`肌肉棒子` 的經驗年數為3年
