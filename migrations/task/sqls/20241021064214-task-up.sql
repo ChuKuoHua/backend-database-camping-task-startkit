@@ -332,8 +332,8 @@ ORDER BY c.experience_years DESC;
 SELECT
   s.name as skill_name,
   count(*) as coach_total
-FROM "COACH_LINK_SKILL" as cls
-INNER JOIN "SKILL" as s
+FROM "COACH_LINK_SKILL" cls
+INNER JOIN "SKILL" s
   ON s.id = cls.skill_id
 GROUP BY s.name
 ORDER BY coach_total DESC
@@ -344,8 +344,8 @@ LIMIT 1;
 SELECT
   cpackage.name as credit_package_name,
   count(*) as sales
-FROM "CREDIT_PACKAGE" as cpackage
-INNER JOIN "CREDIT_PURCHASE" as cpurchse
+FROM "CREDIT_PACKAGE" cpackage
+INNER JOIN "CREDIT_PURCHASE" cpurchse
   ON cpurchse.credit_package_id = cpackage.id
 WHERE cpurchse.created_at >= '2024-11-01 00:00:00'
   AND cpurchse.created_at <= '2024-11-30 23:59:59'
