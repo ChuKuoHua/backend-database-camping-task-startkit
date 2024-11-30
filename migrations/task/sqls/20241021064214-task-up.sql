@@ -65,7 +65,7 @@ INSERT INTO "CREDIT_PURCHASE" (user_id, credit_package_id, purchased_credits, pr
   VALUES
     (
       (SELECT id FROM "USER" WHERE name = '王小明'),
-      (SELECT id  FROM "CREDIT_PACKAGE" WHERE name = '14 堂組合包方案'),
+      (SELECT id FROM "CREDIT_PACKAGE" WHERE name = '14 堂組合包方案'),
       (SELECT credit_amount FROM "CREDIT_PACKAGE" WHERE name = '14 堂組合包方案'),
       (SELECT price  FROM "CREDIT_PACKAGE" WHERE name = '14 堂組合包方案')
     ),
@@ -77,7 +77,7 @@ INSERT INTO "CREDIT_PURCHASE" (user_id, credit_package_id, purchased_credits, pr
     ),
     (
       (SELECT id FROM "USER" WHERE name = '好野人'),
-      (SELECT id  FROM "CREDIT_PACKAGE" WHERE name = '14 堂組合包方案'),
+      (SELECT id FROM "CREDIT_PACKAGE" WHERE name = '14 堂組合包方案'),
       (SELECT credit_amount FROM "CREDIT_PACKAGE" WHERE name = '14 堂組合包方案'),
       (SELECT price  FROM "CREDIT_PACKAGE" WHERE name = '14 堂組合包方案')
     );
@@ -314,9 +314,9 @@ ON credit_purchase.user_id = course_booking.user_id;
 -- 6-1 查詢：查詢專長為重訓的教練，並按經驗年數排序，由資深到資淺（需使用 inner join 與 order by 語法)
 -- 顯示須包含以下欄位： 教練名稱 , 經驗年數, 專長名稱
 SELECT
-  u.name AS user_name,
-  c.experience_years AS coach_experience_years,
-  s.name AS skill_name
+  u.name as user_name,
+  c.experience_years as coach_experience_years,
+  s.name as skill_name
 FROM "COACH_LINK_SKILL" cls
 INNER JOIN "SKILL" s
   ON s.id = cls.skill_id
