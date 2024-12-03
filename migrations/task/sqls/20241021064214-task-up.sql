@@ -314,7 +314,8 @@ ON credit_purchase.user_id = course_booking.user_id;
 -- 6-1 查詢：查詢專長為重訓的教練，並按經驗年數排序，由資深到資淺（需使用 inner join 與 order by 語法)
 -- 顯示須包含以下欄位： 教練名稱 , 經驗年數, 專長名稱
 SELECT
-  u.name as user_name,
+  u.name as coach_name,
+  u.role as coach_role,
   c.experience_years as coach_experience_years,
   s.name as skill_name
 FROM "COACH_LINK_SKILL" cls
@@ -354,6 +355,7 @@ GROUP BY cpackage.name;
 -- 6-4. 查詢：計算 11 月份總營收（使用 purchase_at 欄位統計）
 -- 顯示須包含以下欄位： 總營收
 SELECT
+  DATE_PART('month', purchase_at) as purchase_month,
   sum(price_paid) as total_revenue
 FROM "CREDIT_PURCHASE"
 WHERE purchase_at >= '2024-11-01 00:00:00'
@@ -362,6 +364,7 @@ WHERE purchase_at >= '2024-11-01 00:00:00'
 -- 6-5. 查詢：計算 11 月份有預約課程的會員人數（需使用 Distinct，並用 created_at 和 status 欄位統計）
 -- 顯示須包含以下欄位： 預約會員人數
 SELECT
+  DATE_PART('month', booking_at) as booking_month,
   count(Distinct(user_id)) as booking_num
 FROM "COURSE_BOOKING"
 WHERE created_at >= '2024-11-01 00:00:00'
